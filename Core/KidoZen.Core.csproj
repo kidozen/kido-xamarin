@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58E0303B-84A3-4B1F-B992-2E2D48C5E019}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>KidoZen</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;NET45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>NET45</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="authentication\" />
+    <Folder Include="resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\src\AppInfo.cs">
+      <Link>AppInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\src\AuthConfig.cs">
+      <Link>AuthConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Config.cs">
+      <Link>Config.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Configuration.cs">
+      <Link>Configuration.cs</Link>
+    </Compile>
+    <Compile Include="..\src\DownloadProgressArgs.cs">
+      <Link>DownloadProgressArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ExtensionsNet.cs">
+      <Link>ExtensionsNet.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Files.cs">
+      <Link>Files.cs</Link>
+    </Compile>
+    <Compile Include="..\src\FilesBrowseResult.cs">
+      <Link>FilesBrowseResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Indexes.cs">
+      <Link>Indexes.cs</Link>
+    </Compile>
+    <Compile Include="..\src\KZApplication.cs">
+      <Link>KZApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\src\LogLevel.cs">
+      <Link>LogLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Logging.cs">
+      <Link>Logging.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Mail.cs">
+      <Link>Mail.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MailSender.cs">
+      <Link>MailSender.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Marketplace.cs">
+      <Link>Marketplace.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Metadata.cs">
+      <Link>Metadata.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Queue.cs">
+      <Link>Queue.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Request.cs">
+      <Link>Request.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Response.cs">
+      <Link>Response.cs</Link>
+    </Compile>
+    <Compile Include="..\src\SMSStatus.cs">
+      <Link>SMSStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ServiceEvent.cs">
+      <Link>ServiceEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Services.cs">
+      <Link>Services.cs</Link>
+    </Compile>
+    <Compile Include="..\src\SmsSender.cs">
+      <Link>SmsSender.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Storage.cs">
+      <Link>Storage.cs</Link>
+    </Compile>
+    <Compile Include="..\src\StorageObject.cs">
+      <Link>StorageObject.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\ADFSWSTrustIdentityProvider.cs">
+      <Link>authentication\ADFSWSTrustIdentityProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\Authentication.cs">
+      <Link>authentication\Authentication.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\AuthenticationResult.cs">
+      <Link>authentication\AuthenticationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\ConcurrentDictionary.cs">
+      <Link>authentication\ConcurrentDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\IIdentityProvider.cs">
+      <Link>authentication\IIdentityProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\IdentityProviderConfig.cs">
+      <Link>authentication\IdentityProviderConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\KZUser.cs">
+      <Link>authentication\KZUser.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\KZUserFactory.cs">
+      <Link>authentication\KZUserFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\RequestTokenResult.cs">
+      <Link>authentication\RequestTokenResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\Token.cs">
+      <Link>authentication\Token.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\UseToken.cs">
+      <Link>authentication\UseToken.cs</Link>
+    </Compile>
+    <Compile Include="..\src\authentication\WRAPv09IdentityProvider.cs">
+      <Link>authentication\WRAPv09IdentityProvider.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\resources\ADFSToken.xml">
+      <Link>resources\ADFSToken.xml</Link>
+    </None>
+    <None Include="..\src\resources\SOAPRSTTemplate.xml">
+      <Link>resources\SOAPRSTTemplate.xml</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\libraries\json.net-4.5.11\mono\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

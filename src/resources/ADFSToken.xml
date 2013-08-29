@@ -1,0 +1,82 @@
+﻿<s:Envelope
+  xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:a="http://www.w3.org/2005/08/addressing"
+  xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <s:Header>
+    <a:Action s:mustUnderstand="1">http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTRC/IssueFinal</a:Action>
+    <o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <u:Timestamp u:Id="_0">
+        <u:Created>2012-05-11T18:43:06.844Z</u:Created>
+        <u:Expires>2012-05-11T18:48:06.844Z</u:Expires>
+      </u:Timestamp>
+    </o:Security>
+  </s:Header>
+  <s:Body>
+    <trust:RequestSecurityTokenResponseCollection xmlns:trust="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+      <trust:RequestSecurityTokenResponse>
+        <trust:Lifetime>
+          <wsu:Created xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2012-05-11T18:43:06.844Z</wsu:Created>
+          <wsu:Expires xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2012-05-11T19:43:06.844Z</wsu:Expires>
+        </trust:Lifetime>
+        <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+          <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+            <wsa:Address>https://jazz-auth.accesscontrol.windows.net</wsa:Address>
+          </wsa:EndpointReference>
+        </wsp:AppliesTo>
+        <trust:RequestedSecurityToken>
+          <Assertion ID="_2efcca6a-5485-4ba7-9679-dc796a5dc052" IssueInstant="2012-05-11T18:43:06.844Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+            <Issuer>http://SR1.armoniabank.com/adfs/services/trust</Issuer>
+            <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+              <ds:SignedInfo>
+                <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                <ds:Reference URI="#_2efcca6a-5485-4ba7-9679-dc796a5dc052">
+                  <ds:Transforms>
+                    <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                    <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                  </ds:Transforms>
+                  <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                  <ds:DigestValue>DVSOOuzeHMms/o2YkpllSCopP7sJ26MknI/L38imxAc=</ds:DigestValue>
+                </ds:Reference>
+              </ds:SignedInfo>
+              <ds:SignatureValue>GmiXXuMLEwwaAtIO0lPjKTwI01rFiT11YlBhSITUDmfGnDEg9weCGo9P8UzPk6/E5NVnWi6EHVW9lUqaMIIMf5BU1a5QeCIkQcM6A8rUoT3mcfTnF7y9jJYirAlnyffdWNjPOD7DrGUx28YXNDy/xD70kbNwDif5ZaDFGMx/oeKCzBsrGYyOp8CSEp+RYAmgxGrvi2gxp4aaSfjrfTdlFOoHny4Gnb6Z9eB1p88MqlKlLwDEvnswQNH/Ozf3pDvOJZ20QQnYoU2RlEBTGtThv9wDdnh3b6tg3U3ZWDPThfx4FAJ+RDTYYMfC1dUM/0gLQNtPf8pXonnFfmvz7Kxr8g==</ds:SignatureValue>
+              <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+                <ds:X509Data>
+                  <ds:X509Certificate>MIIC4jCCAcqgAwIBAgIQFPZxbBX4Vb1B+J5rLcdBFjANBgkqhkiG9w0BAQsFADAtMSswKQYDVQQDEyJBREZTIFNpZ25pbmcgLSBTUjEuYXJtb25pYWJhbmsuY29tMB4XDTEyMDQxMjE3NDY0MFoXDTEzMDQxMjE3NDY0MFowLTErMCkGA1UEAxMiQURGUyBTaWduaW5nIC0gU1IxLmFybW9uaWFiYW5rLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOd8ivo5SaBNwrti7xkSQg6MNURbfaFNVm0ysS4ID9XRIJFKP/07621Xf2iGaG00f+7e9EYrysIZ3Jxau9gUnGGWN8o9143rnCjreJYw9Satl4vJOFPNDkdIV6DH0Zu273YpTpH7nKp4u2TAmMyuep/V8+tl2otCq9ePpbkBqwOnvujkJqNvMS4qgOKXIpj4VNBfCvCxH3jS6D4QS2hMHKYb+b5IWOCP3IyhkhhGVyYwqDV4vS+YP5CPGoCVX0/wXribnJOaqV/aF/8MByehiTgoEWlisM9zfHP6f0S1+Z1SutwGlBuBabwqoSsidhgvFWimryJFh52wiccIDP0y9ocCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAZ2e09E/+YJjoU0CSew+DVesawjGgsckEyzMulDvGQYIZjF6GVY4n3xQ1kmrih5Y3VG0bWjiyFy7EPY+6LQR8qbnY0bMu17KXyfex4015uxMFteLYT/Ve4yOT51nYgEhIa+jOHfugLrHAkc4mw960rE8KDafQ2SgbvjEzsg+yF+3m6f7E4r2Qm6ufCFyH6a4whSXlmepYLg0Aga8qm0ZT6Za7dxa21GxZ8j8EzYP7InN7q3IJmFM0GMsVbj0pTVzN/UooJo8Q7fmDhX+yL8+SOgqbwu8gEc88TOWNdz7NSI1V7tiSqf63MiEGmvQLWIpt3m9xojkadmlY6afv/ixjXQ==</ds:X509Certificate>
+                </ds:X509Data>
+              </KeyInfo>
+            </ds:Signature>
+            <Subject>
+              <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+                <SubjectConfirmationData NotOnOrAfter="2012-05-11T18:48:06.844Z"/>
+              </SubjectConfirmation>
+            </Subject>
+            <Conditions NotBefore="2012-05-11T18:43:06.844Z" NotOnOrAfter="2012-05-11T19:43:06.844Z">
+              <AudienceRestriction>
+                <Audience>https://jazz-auth.accesscontrol.windows.net</Audience>
+              </AudienceRestriction>
+            </Conditions>
+            <AuthnStatement AuthnInstant="2012-05-11T18:43:06.688Z">
+              <AuthnContext>
+                <AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:Password</AuthnContextClassRef>
+              </AuthnContext>
+            </AuthnStatement>
+          </Assertion>
+        </trust:RequestedSecurityToken>
+        <trust:RequestedAttachedReference>
+          <SecurityTokenReference b:TokenType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:b="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd">
+            <KeyIdentifier ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLID">_2efcca6a-5485-4ba7-9679-dc796a5dc052</KeyIdentifier>
+          </SecurityTokenReference>
+        </trust:RequestedAttachedReference>
+        <trust:RequestedUnattachedReference>
+          <SecurityTokenReference b:TokenType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0" xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:b="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd">
+            <KeyIdentifier ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLID">_2efcca6a-5485-4ba7-9679-dc796a5dc052</KeyIdentifier>
+          </SecurityTokenReference>
+        </trust:RequestedUnattachedReference>
+        <trust:TokenType>urn:oasis:names:tc:SAML:2.0:assertion</trust:TokenType>
+        <trust:RequestType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue</trust:RequestType>
+        <trust:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Bearer</trust:KeyType>
+      </trust:RequestSecurityTokenResponse>
+    </trust:RequestSecurityTokenResponseCollection>
+  </s:Body>
+</s:Envelope>
