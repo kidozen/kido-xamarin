@@ -9,9 +9,9 @@ through the steps for setting up the SDK and running the tests.
 ##
 To get Your Credentials Register in [kidozen.com](http://kidozen.com).
 
-##    Get the Windows SDK
+##    Get the Xamarin SDK
 ##
-Minimum requirements for using the KidoZen SDK for Windows are:
+Minimum requirements for using the KidoZen SDK for Xamarin are:
 
 - Xamarin Studio 4.0.12 (build 3) 
 	
@@ -28,8 +28,16 @@ security credentials.
 All unit tests demostrate how to access KidoZen from an application using
 the following services:
 
-- Configuration - EMail - File - Initialization - Logging - Marketplace -
-Pubsub - Queue - SMS - Storage
+- Configuration 
+- EMail 
+- File 
+- Initialization 
+- Logging 
+- Marketplace 
+- Pubsub 
+- Queue 
+- SMS 
+- Storage
 
 ##    To prepare the Unit Tests
 ##
@@ -64,8 +72,8 @@ block the UI.
 Initialize the Application: During initialization the SDK pulls the
 application configuration from KidoZen servers.
 
-	var app = new KZApplication("https://marketplace's URL",
-		"application name"); await app.Initialize();
+	var app = new KZApplication("https://marketplace's URL","application name"); 
+	await app.Initialize();
 
 Authenticate: you must provide the user name, its password and the user
 source. The SDK hides all the calls needed to authenticate the user against
@@ -73,16 +81,15 @@ the selected user source and to create a security tokens to execute all the
 services call. The SDK's has an internal cache to store these tokens. Each
 time the token is near get expired, teh SDk will renew it on the background.
 
-	var user = await app.Authenticate("userName", "userPassword",
-		"userSource");
+	var user = await app.Authenticate("userName", "userPassword","userSource");
 
 Once the user is authenticated you can start using all the services:
 
-	var tasks = app.Storage["tasks"]; var queryResult = await
-		tasks.Query<Task>("{}"); ...
+	var tasks = app.Storage["tasks"]; 
+	var queryResult = await tasks.Query<Task>("{}"); ...
 
-	var queue = app.Queue["pendingDocuments"]; var document = await
-		queue.Dequeue<Document>(); ...
+	var queue = app.Queue["pendingDocuments"]; 
+	var document = await queue.Dequeue<Document>(); ...
 
 #    License 
 #
