@@ -55,5 +55,16 @@ namespace KidoZen
         {
             if (Name == null) throw new Exception(@"Service name is missing. Use Service[""name""]");
         }
+		
+		[Obsolete("InvokeArray is goint to be deprecated in next versions of KidoZen services/agents.")]
+		public async Task<ServiceEvent<JArray>> InvokeArray<T>(string method, T args)
+		{
+			if (string.IsNullOrWhiteSpace(method)) throw new ArgumentNullException("method");
+
+			Validate();
+			var endpoint = Url.Concat("invoke/" + method);
+			return await endpoint.ExecuteAsync<JArray>(app, args.ToJToken(), method="POST");
+		}
+
     }
 }
