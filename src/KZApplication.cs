@@ -29,6 +29,7 @@ namespace KidoZen
         public Files Files { get; private set; }
         public Marketplace Marketplace { get; private set; }
         public Service Service { get; private set; }
+		public DataSource DataSource { get; private set; }
 
         public bool IsInitializing { get; private set; }
         public bool Initialized { get; private set; }
@@ -209,6 +210,7 @@ namespace KidoZen
             Files = new Files(this, config.ValueUri("files"));
             Authentication = new Authentication(marketPlaceUri.Host, config.Value<JObject>("authConfig"), this.Name);
             Service = new Service(this, config.ValueUri("service"));
+			DataSource = new DataSource(this, config.ValueUri("datasource"));
         }
 
 
