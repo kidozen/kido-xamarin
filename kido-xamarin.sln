@@ -197,6 +197,7 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = KidoZen.Client.Android\KidoZen.Client.Android.csproj
+		version = 1.0.3
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
