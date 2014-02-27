@@ -149,7 +149,9 @@
     <Compile Include="..\src\authentication\WRAPv09IdentityProvider.cs">
       <Link>authentication\WRAPv09IdentityProvider.cs</Link>
     </Compile>
-    <Compile Include="DataSource.cs" />
+    <Compile Include="..\src\DataSource.cs">
+      <Link>DataSource.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\resources\ADFSToken.xml">

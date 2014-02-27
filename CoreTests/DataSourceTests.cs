@@ -14,7 +14,7 @@ namespace KidoZen.Core.Tests
 	public class DataSourceTests
 	{
 		static KZApplication app;
-		static DataSource datasource;
+		static DataSource queryDataSrc, invokeDataSrc;
 
 		[SetUp]
 		public void SetUp ()
@@ -25,31 +25,34 @@ namespace KidoZen.Core.Tests
 				app.Initialize().Wait();
 				app.Authenticate(Constants.user, Constants.pass, Constants.provider).Wait();
 			}
-			if (datasource == null) {
-				datasource = app.DataSource["test-query"];
+			if (queryDataSrc == null) {
+				queryDataSrc = app.DataSource["test-query"];
+			}
+			if (invokeDataSrc == null) {
+				invokeDataSrc = app.DataSource["test-operation"];
 			}
 		}
 
 		[Test]
 		public void CanGetAnInstance()
 		{
-			Assert.AreEqual(Constants.appUrl + "/api/v2/datasources/test-query", datasource.Url.ToString());
+			Assert.AreEqual(Constants.appUrl + "/api/v2/datasources/test-query", queryDataSrc.Url.ToString());
 		}
 			
 		[Test]
 		public void Get()
 		{
-			var getResult = datasource.Query<JObject>().Result;
+			var getResult = queryDataSrc.Query().Result;
 			Assert.AreEqual(HttpStatusCode.OK, getResult.StatusCode);
 			Assert.IsNotNull(getResult.Data);
 		}
 
 		[Test]
-		public void GetArray()
+		public void Invoke()
 		{
-			var getResult = datasource.Query<JArray>().Result;
-			Assert.AreEqual(HttpStatusCode.OK, getResult.StatusCode);
-			Assert.IsNotNull(getResult.Data);
+			var invokeResult = invokeDataSrc.Invoke().Result;
+			Assert.AreEqual(HttpStatusCode.OK, invokeResult.StatusCode);
+			Assert.IsNotNull(invokeResult.Data);
 		}
 
 	}

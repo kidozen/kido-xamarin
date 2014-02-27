@@ -47,41 +47,21 @@ namespace KidoZen
 			if (Name == null) throw new Exception(@"Datasource name is missing. Use Datasource[""name""]");
 		}
 
-		public async Task<ServiceEvent<JObject>> Invoke(string method)
+		public async Task<ServiceEvent<JObject>> Invoke()
 		{
-			return await Invoke<JObject>(method, new JObject());
+			return await Invoke<JObject>(string.Empty, new JObject());
 		}
 
-		public async Task<ServiceEvent<JObject>> Invoke<T>(string method, T args)
+		private async Task<ServiceEvent<JObject>> Invoke<T>(string method, T args)
 		{
-			if (string.IsNullOrWhiteSpace(method)) throw new ArgumentNullException("method");
-
 			Validate();
-			var endpoint = Url.Concat(method);
-			return await endpoint.ExecuteAsync<JObject>(app, args.ToJToken(), method="POST");
+			return await Url.ExecuteAsync<JObject>(app, args.ToJToken(), method="POST");
 		}
 
-		[Obsolete("InvokeArray is goint to be deprecated in next versions of KidoZen datasources.")]
-		public async Task<ServiceEvent<JArray>> InvokeArray<T>(string method, T args)
-		{
-			if (string.IsNullOrWhiteSpace(method)) throw new ArgumentNullException("method");
-
-			Validate();
-			var endpoint = Url.Concat(method);
-			return await endpoint.ExecuteAsync<JArray>(app, args.ToJToken(), method="POST");
-		}
-
-		public async Task<ServiceEvent<JObject>> Query<T>()
+		public async Task<ServiceEvent<JObject>> Query()
 		{
 			Validate();
 			return await Url.ExecuteAsync<JObject>(app);
-		}
-
-		[Obsolete("QueryArray is goint to be deprecated in next versions of KidoZen datasources.")]
-		public async Task<ServiceEvent<JArray>> QueryArray<T>()
-		{
-			Validate();
-			return await Url.ExecuteAsync<JArray>(app);
 		}
 	}
 }

@@ -173,6 +173,9 @@
     <Compile Include="..\src\PubSubChannel-mono.cs">
       <Link>PubSubChannel-mono.cs</Link>
     </Compile>
+    <Compile Include="..\src\DataSource.cs">
+      <Link>DataSource.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
