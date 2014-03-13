@@ -28,7 +28,7 @@ namespace KidoZen
 			if (endpoint == null) throw new ArgumentNullException("endpoint");
 			this.app = app;
 
-			this.endpoint = endpoint;
+			this.endpoint = endpoint ;
 			Name = name;
 			if (name != null) Url = endpoint.Concat(name);
 		}
@@ -49,13 +49,13 @@ namespace KidoZen
 
 		public async Task<ServiceEvent<JObject>> Invoke()
 		{
-			return await Invoke<JObject>(string.Empty, new JObject());
+			return await Invoke<JObject>( new JObject());
 		}
 
-		private async Task<ServiceEvent<JObject>> Invoke<T>(string method, T args)
+		public async Task<ServiceEvent<JObject>> Invoke<T>( T args)
 		{
 			Validate();
-			return await Url.ExecuteAsync<JObject>(app, args.ToJToken(), method="POST");
+			return await Url.ExecuteAsync<JObject>(app, args.ToJToken(), "POST");
 		}
 
 		public async Task<ServiceEvent<JObject>> Query()
@@ -63,6 +63,20 @@ namespace KidoZen
 			Validate();
 			return await Url.ExecuteAsync<JObject>(app);
 		}
+
+		public async Task<ServiceEvent<JObject>> Query<T>( T args)
+		{
+			var token = args.ToJToken ().ToString ().Replace (System.Environment.NewLine, string.Empty);
+			var source = JsonConvert.DeserializeObject<Dictionary<string, object>>(token);
+			var pairs = source.Select(x => string.Format("{0}={1}", x.Key, x.Value));		
+			var qs = string.Join("&", pairs).Replace (System.Environment.NewLine, string.Empty).Replace(" ",string.Empty);
+			var url = new Uri(Url, string.Format("?{0}",qs));
+
+			Validate();
+			return await url.ExecuteAsync<JObject>(app);
+		}
+
+
 	}
 }
 

@@ -14,7 +14,7 @@ namespace KidoZen.Core.Tests
 	public class DataSourceTests
 	{
 		static KZApplication app;
-		static DataSource queryDataSrc, invokeDataSrc;
+		static DataSource queryDataSrc, invokeDataSrc,queryWithData, invokeWithData;
 
 		[SetUp]
 		public void SetUp ()
@@ -30,6 +30,12 @@ namespace KidoZen.Core.Tests
 			}
 			if (invokeDataSrc == null) {
 				invokeDataSrc = app.DataSource["test-operation"];
+			}
+			if (queryWithData == null) {
+				queryWithData = app.DataSource["test-query-params"];
+			}
+			if (invokeWithData == null) {
+				invokeWithData = app.DataSource["test-operation-params"];
 			}
 		}
 
@@ -54,6 +60,25 @@ namespace KidoZen.Core.Tests
 			Assert.AreEqual(HttpStatusCode.OK, invokeResult.StatusCode);
 			Assert.IsNotNull(invokeResult.Data);
 		}
+
+		[Test]
+		public void GetWithData()
+		{
+			var data = new { path = "?k=kidozen" };
+			//var data = new { path = "/", qs = new { k = "kidozen" } ;
+			var getResult = queryDataSrc.Query(data).Result;
+			Assert.AreEqual(HttpStatusCode.OK, getResult.StatusCode);
+			Assert.IsNotNull(getResult.Data);
+		}
+
+		[Test]
+		public void InvokeWithData()
+		{
+			var invokeResult = invokeWithData.Invoke(new { path = "?k=kidozen" }).Result;
+			Assert.AreEqual(HttpStatusCode.OK, invokeResult.StatusCode);
+			Assert.IsNotNull(invokeResult.Data);
+		}
+
 
 	}
 }
