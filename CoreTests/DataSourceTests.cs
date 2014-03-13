@@ -64,8 +64,8 @@ namespace KidoZen.Core.Tests
 		[Test]
 		public void GetWithData()
 		{
-			var data = new { path = "?k=kidozen" };
-			//var data = new { path = "/", qs = new { k = "kidozen" } ;
+			//var data = new { path = "?k=kidozen" };
+			var data = new {path="/",qs=new{k="kidozen"}};
 			var getResult = queryDataSrc.Query(data).Result;
 			Assert.AreEqual(HttpStatusCode.OK, getResult.StatusCode);
 			Assert.IsNotNull(getResult.Data);
