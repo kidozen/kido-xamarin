@@ -168,7 +168,7 @@ namespace KidoZen
                     headers.Add("Cache-Control", "no-cache");
                     headers.Add("Pragma", "no-cache");
                 }
-                
+
                 // Adds authentication's header
                 if (useToken != UseToken.None && app != null && app.Authentication != null && app.Authentication.User != null)
                 {
