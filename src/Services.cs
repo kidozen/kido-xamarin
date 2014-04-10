@@ -37,19 +37,22 @@ namespace KidoZen
             }
         }
 
-		public async Task<ServiceEvent<JObject>> Invoke(string method, int timeout = 60)
+		public async Task<ServiceEvent<JObject>> Invoke(string method, int? timeout = null)
         {
 			return await Invoke<JObject>(method, new JObject(), timeout);
         }
         
-		public async Task<ServiceEvent<JObject>> Invoke<T>(string method, T args, int timeout = 60)
+		public async Task<ServiceEvent<JObject>> Invoke<T>(string method, T args, int? timeout = null)
         {
             if (string.IsNullOrWhiteSpace(method)) throw new ArgumentNullException("method");
 
             Validate();
             var endpoint = Url.Concat("invoke/" + method);
-
-			return await endpoint.ExecuteAsync<JObject>(app, args.ToJToken(), method:"POST", timeout:new TimeSpan(0,0,timeout));
+			if (timeout != null) {
+				return await endpoint.ExecuteAsync<JObject> (app, args.ToJToken (), method: "POST", timeout: new TimeSpan (0, 0, timeout.Value));
+			}
+			else
+				return await endpoint.ExecuteAsync<JObject>(app, args.ToJToken(), method:"POST");
         }
 
         private void Validate()
@@ -58,13 +61,16 @@ namespace KidoZen
         }
 		
 		[Obsolete("InvokeArray is goint to be deprecated in next versions of KidoZen services/agents.")]
-		public async Task<ServiceEvent<JArray>> InvokeArray<T>(string method, T args, int timeout = 60)
+		public async Task<ServiceEvent<JArray>> InvokeArray<T>(string method, T args, int? timeout = null)
 		{
 			if (string.IsNullOrWhiteSpace(method)) throw new ArgumentNullException("method");
 
 			Validate();
 			var endpoint = Url.Concat("invoke/" + method);
-			return await endpoint.ExecuteAsync<JArray>(app, args.ToJToken(), method:"POST", timeout:new TimeSpan(0,0,timeout));
+			if(timeout!=null)
+				return await endpoint.ExecuteAsync<JArray>(app, args.ToJToken(), method:"POST", timeout:new TimeSpan(0,0,timeout.Value));
+			else
+				return await endpoint.ExecuteAsync<JArray>(app, args.ToJToken(), method:"POST");
 		}
 
     }
