@@ -54,7 +54,7 @@ namespace KidoZen
 
             if (body != null)
             {
-                await body.CopyToAsync(res.Body);
+                body.CopyTo(res.Body);
                 await res.Body.FlushAsync();
                 res.Body.Seek(0, SeekOrigin.Begin);
             }

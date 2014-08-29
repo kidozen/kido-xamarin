@@ -25,7 +25,7 @@ namespace KidoZen.Core.Tests
 				app.Authenticate(Constants.user, Constants.pass, Constants.provider).Wait();
 			}
 			if (sms == null) {
-				sms = app.SmsSender["+17865475207"];
+				sms = app.SmsSender["+13053038639"];
 			}
 		}
 
@@ -38,9 +38,15 @@ namespace KidoZen.Core.Tests
 		[Test]
 		public void Send()
 		{
-			var result = sms.Send("Hi from Kidozen!").Result;
-			Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
-			Assert.IsNotNull(result.Data.status);
+			try
+			{
+				var result = sms.Send("test").Result;
+				Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
+				Assert.IsNotNull(result.Data.status);
+			}
+			catch(Exception e) {
+				Assert.Fail ();
+			}
 		}
 	}
 }

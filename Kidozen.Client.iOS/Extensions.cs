@@ -166,6 +166,7 @@ namespace KidoZen
                 {
                     uri = addNoCache(uri);
                     headers.Add("Cache-Control", "no-cache");
+					headers.Add("Accept", "*/*");
                     headers.Add("Pragma", "no-cache");
                 }
 				if(timeout!=null && timeout.HasValue) 
@@ -244,7 +245,7 @@ namespace KidoZen
                 }
                 return evt;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }

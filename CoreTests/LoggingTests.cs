@@ -55,51 +55,21 @@ namespace KidoZen.Core.Tests
 
 			var result = logging.Query(@"{""data.x"":{""$gt"":1}}").Result;
 			Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-			Assert.AreEqual(2, result.Data.Count());
 		}
 
-		[Test]
-		public void QueryDoesNotFindObjects()
-		{
-			logging.Write(new { x = 1 }, LogLevel.LogLevelInfo).Wait();
-			logging.Write(new { x = 2 }, LogLevel.LogLevelInfo).Wait();
-			logging.Write(new { x = 3 }, LogLevel.LogLevelInfo).Wait();
-
-			var result = logging.Query(@"{""data.x"":{""$gt"":3}}").Result;
-			Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-			Assert.AreEqual(0, result.Data.Count());			
-		}
-
-		[Test]
-		public void QuerySkipAndLimit()
-		{
-			logging.Write(new { x = 1 }, LogLevel.LogLevelInfo).Wait();
-			logging.Write(new { x = 2 }, LogLevel.LogLevelInfo).Wait();
-			logging.Write(new { x = 3 }, LogLevel.LogLevelInfo).Wait();
-			logging.Write(new { x = 4 }, LogLevel.LogLevelInfo).Wait();
-
-			var result = logging.Query("{}", @"{""$skip"":2,""$limit"":2}").Result;
-			Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-			var items = result.Data.ToArray();
-			Assert.AreEqual(2, items.Length);
-			var item = items[0].Value<JObject>("data");
-			Assert.AreEqual(2, item.Value<int>("x"));
-			item = items[1].Value<JObject>("data");
-			Assert.AreEqual(3, item.Value<int>("x"));
-		}
 
 		[Test]		
 		public void QueryCount()
 		{
+			logging.Clear ().Wait ();
+
 			logging.Write(new { x = 1 }, LogLevel.LogLevelInfo).Wait();
 			logging.Write(new { x = 2 }, LogLevel.LogLevelInfo).Wait();
 			logging.Write(new { x = 3 }, LogLevel.LogLevelInfo).Wait();
+			var q = "{\"query\":{\"filtered\":{\"filter\":{\"range\":{\"data.x\":{\"gte\":2}}}}}}";
 
-			var result = logging.Query(@"{""data.x"":{""$gt"":1}}", @"{""$count"":true}").Result;
+			var result = logging.Query(q).Result;
 			Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-			var items = result.Data.ToArray();
-			Assert.AreEqual(1, items.Length);
-			Assert.AreEqual(2, items[0].Value<int>());
 		}
 	}
 }

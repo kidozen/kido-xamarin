@@ -25,24 +25,24 @@ namespace KidoZen.Core.Tests
 				app.Authenticate(Constants.user, Constants.pass, Constants.provider).Wait();
 			}
 			if (service == null) {
-				service = app.Service["echo"];
+				service = app.Service["weather"];
 			}
 		}
 
 		[Test]
 		public void CanGetAnInstance()
 		{
-			Assert.AreEqual(Constants.appUrl + "/api/services/echo", service.Url.ToString());
+			Assert.AreEqual(Constants.appUrl + "/api/services/weather", service.Url.ToString());
 		}
 
 		[Test]
 		public void Invoke()
 		{
-			var invokeResult = service.Invoke("send", new { foo = "bar" }).Result;
+			var invokeResult = service.Invoke("get", new { qs = new { q = "Buenos Aires"} }).Result;
 
 			Assert.AreEqual(HttpStatusCode.OK, invokeResult.StatusCode);
 			Assert.IsNotNull(invokeResult.Data);
-			Assert.AreEqual("bar", invokeResult.Data.Value<string>("foo"));
+			Assert.IsTrue( invokeResult.Data.ToString().Contains("Buenos Aires") );
 		}
 	}
 }

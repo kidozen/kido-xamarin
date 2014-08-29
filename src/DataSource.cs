@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace KidoZen
 {
@@ -68,15 +69,14 @@ namespace KidoZen
 		{
 			var token = args.ToJToken ().ToString ().Replace (System.Environment.NewLine, string.Empty);
 			var source = JsonConvert.DeserializeObject<Dictionary<string, object>>(token);
-			var pairs = source.Select(x => string.Format("{0}={1}", x.Key, x.Value));		
+			var pairs = source.Select(x => string.Format("{0}={1}", x.Key, WebUtility.UrlEncode(x.Value.ToString())));		
 			var qs = string.Join("&", pairs).Replace (System.Environment.NewLine, string.Empty).Replace(" ",string.Empty);
+
 			var url = new Uri(Url, string.Format("?{0}",qs));
 
 			Validate();
 			return await url.ExecuteAsync<JObject>(app);
 		}
-
-
 	}
 }
 

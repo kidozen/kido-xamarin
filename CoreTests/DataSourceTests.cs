@@ -26,20 +26,20 @@ namespace KidoZen.Core.Tests
 				app.Authenticate(Constants.user, Constants.pass, Constants.provider).Wait();
 			}
 			if (queryDataSrc == null) {
-				queryDataSrc = app.DataSource["test-query"];
+				queryDataSrc = app.DataSource["GetCityWeather"];
 			}
 			if (invokeDataSrc == null) {
-				invokeDataSrc = app.DataSource["test-operation"];
+				invokeDataSrc = app.DataSource["InvokeCityWeather"];
 			}
 			if (queryWithData == null) {
-				queryWithData = app.DataSource["test-query-params"];
+				queryWithData = app.DataSource["GetCityWeather"];
 			}
 			if (invokeWithData == null) {
-				invokeWithData = app.DataSource["test-operation-params"];
+				invokeWithData = app.DataSource["InvokeCityWeather"];
 			}
 		}
 
-		[Test]
+		//[Test]
 		public void CanGetAnInstance()
 		{
 			Assert.AreEqual(Constants.appUrl + "/api/v2/datasources/test-query", queryDataSrc.Url.ToString());
@@ -64,8 +64,7 @@ namespace KidoZen.Core.Tests
 		[Test]
 		public void GetWithData()
 		{
-			//var data = new { path = "?k=kidozen" };
-			var data = new {path="/",qs=new{k="kidozen"}};
+			var data = new {city="London"};
 			var getResult = queryDataSrc.Query(data).Result;
 			Assert.AreEqual(HttpStatusCode.OK, getResult.StatusCode);
 			Assert.IsNotNull(getResult.Data);
@@ -74,7 +73,7 @@ namespace KidoZen.Core.Tests
 		[Test]
 		public void InvokeWithData()
 		{
-			var invokeResult = invokeWithData.Invoke(new { path = "?k=kidozen" }).Result;
+			var invokeResult = invokeWithData.Invoke(new { city = "London" }).Result;
 			Assert.AreEqual(HttpStatusCode.OK, invokeResult.StatusCode);
 			Assert.IsNotNull(invokeResult.Data);
 		}

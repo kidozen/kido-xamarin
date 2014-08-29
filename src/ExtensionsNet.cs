@@ -41,8 +41,13 @@ namespace KidoZen
                     await reqStream.FlushAsync();
                 }
 
-                var res = (HttpWebResponse)await Task.Factory.FromAsync<WebResponse>(req.BeginGetResponse, req.EndGetResponse, null);
-                var resStream = default(Stream);
+				//var res = (HttpWebResponse) await Task.Factory.FromAsync<WebResponse>(req.BeginGetResponse, req.EndGetResponse, null);
+				// weird problems with some datasoures, replace the above line for the following; this should not block UI cause the public interfaces
+				// are async
+				var wr = Task.Factory.FromAsync<WebResponse>(req.BeginGetResponse, req.EndGetResponse, null).Result;
+				var res = (HttpWebResponse) wr;
+
+				var resStream = default(Stream);
                 if (res.ContentLength > 0)
                 {
                     resStream = res.GetResponseStream();

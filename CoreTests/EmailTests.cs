@@ -4,6 +4,7 @@ using System.Net;
 using NUnit.Framework;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 
 using KidoZen;
 
@@ -19,11 +20,17 @@ namespace KidoZen.Core.Tests
 		public void SetUp ()
 		{
 			Console.WriteLine ("Setting up");
+			Stopwatch sw = new Stopwatch();
+			sw.Start();
+
 			if (app==null) {
 				app = new KZApplication(Constants.marketplace, Constants.application);
 				app.Initialize().Wait();
 				app.Authenticate(Constants.user, Constants.pass, Constants.provider).Wait();
 			}
+			sw.Stop();
+			Console.WriteLine("Elapsed={0}",sw.Elapsed);
+
 			if (mail == null) {
 				mail = app.MailSender;
 			}
@@ -41,7 +48,7 @@ namespace KidoZen.Core.Tests
 			var result = mail.Send(new Mail {
 				from = Constants.email,
 				to = Constants.email,
-				subject = "test from windows SDK",
+				subject = "test from Xamarin SDK",
 				textBody ="does it work?",
 				htmlBody = "<html><body><a>does it work?</a></body></html>"
 			}).Result;

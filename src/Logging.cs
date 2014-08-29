@@ -42,9 +42,9 @@ namespace KidoZen
         {
             if (string.IsNullOrWhiteSpace(query)) throw new ArgumentNullException("query");
 
-            var queryString = string.Format("?query={0}&options={1}",
-                WebUtility.UrlEncode(query),
-                WebUtility.UrlEncode(string.IsNullOrWhiteSpace(options) ? "{}" : options));
+			var queryString = options==null ? 
+				string.Format("?query={0}",WebUtility.UrlEncode(query)) :
+				string.Format("?query={0}&options={1}",WebUtility.UrlEncode(query),WebUtility.UrlEncode(string.IsNullOrWhiteSpace(options) ? "{}" : options));
 
             return await new Uri(Url, queryString).ExecuteAsync<IEnumerable<T>>(app);
         }
