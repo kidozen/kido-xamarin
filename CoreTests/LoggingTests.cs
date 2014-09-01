@@ -45,19 +45,9 @@ namespace KidoZen.Core.Tests
 			Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
 		}
 
-
-		[Test]
-		public void QueryDoesFindObjects()
-		{
-			logging.Write(new { x = 1 }, LogLevel.LogLevelInfo).Wait();
-			logging.Write(new { x = 2 }, LogLevel.LogLevelInfo).Wait();
-			logging.Write(new { x = 3 }, LogLevel.LogLevelInfo).Wait();
-
-			var result = logging.Query(@"{""data.x"":{""$gt"":1}}").Result;
-			Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-		}
-
-
+		/*
+		This version of the SDK uses the old endpoint of logging, the service ignores the query and returns all log entries
+		*/
 		[Test]		
 		public void QueryCount()
 		{
@@ -69,6 +59,7 @@ namespace KidoZen.Core.Tests
 			var q = "{\"query\":{\"filtered\":{\"filter\":{\"range\":{\"data.x\":{\"gte\":2}}}}}}";
 
 			var result = logging.Query(q).Result;
+			Assert.AreEqual (3, result.Data.ToList().Count());
 			Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
 		}
 	}
