@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidoZen.Core", "Core\KidoZe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidoZen.Core.Tests", "CoreTests\KidoZen.Core.Tests.csproj", "{0C1D7BCF-67FB-43E2-B091-8432C78D8154}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E89AA7CC-CC11-449D-96F6-C419636B7923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passive", "samples\ios\Passive\Passive.csproj", "{BB08A805-A733-4DC4-B355-191CC5543D10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -194,9 +198,54 @@ Global
 		{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}.Release|Win32.ActiveCfg = Release|Any CPU
 		{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}.Release|x64.ActiveCfg = Release|Any CPU
 		{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}.Release|x86.ActiveCfg = Release|Any CPU
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug_Ubuntu|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug_Ubuntu|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|ARM.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|ARM.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|iPhone.Build.0 = Debug|iPhone
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|Mixed Platforms.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|Mixed Platforms.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|Win32.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|Win32.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|x64.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|x64.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|x86.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Debug|x86.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Default|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Default|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release_Ubuntu|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release_Ubuntu|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|ARM.ActiveCfg = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|ARM.Build.0 = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|iPhone.ActiveCfg = Release|iPhone
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|iPhone.Build.0 = Release|iPhone
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|Mixed Platforms.ActiveCfg = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|Mixed Platforms.Build.0 = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|Win32.ActiveCfg = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|Win32.Build.0 = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|x64.ActiveCfg = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|x64.Build.0 = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|x86.ActiveCfg = Release|iPhoneSimulator
+		{BB08A805-A733-4DC4-B355-191CC5543D10}.Release|x86.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB08A805-A733-4DC4-B355-191CC5543D10} = {E89AA7CC-CC11-449D-96F6-C419636B7923}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = KidoZen.Client.Android\KidoZen.Client.Android.csproj
+		StartupItem = samples\ios\Passive\Passive.csproj
 		version = 1.0.4
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution

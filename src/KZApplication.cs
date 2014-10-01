@@ -39,10 +39,11 @@ namespace KidoZen
 
         public delegate void OnEventHandler (object sender, EventArgs e);
 
-			public event OnEventHandler OnInitialization;
-			public event OnEventHandler OnAuthentication;
+		public event OnEventHandler OnInitialization;
+		public event OnEventHandler OnAuthentication;
+		private Boolean _bypassSSL;
 
-			private Boolean _bypassSSL;
+		internal JObject ApplicationConfiguration;
 
         public KZApplication(string marketPlaceUri, string name, Boolean bypassSSL=true)
         {
@@ -74,6 +75,7 @@ namespace KidoZen
                 {
                     if ( configurations.Data.Count > 0)
                     {
+						this.ApplicationConfiguration = configurations.Data[0] as JObject;
                         AllocServices(configurations.Data[0] as JObject);
                         Initialized = true;
                     }
@@ -85,10 +87,11 @@ namespace KidoZen
                     
 					if (OnInitialization != null)
 					{
-						Task.Run(() =>
-						         {
-							OnInitialization.Invoke(this, new EventArgs());
-						});
+						Task.Run(() => 
+							{
+								OnInitialization.Invoke(this, new EventArgs());
+							}
+						);
 					}
 
                 }
