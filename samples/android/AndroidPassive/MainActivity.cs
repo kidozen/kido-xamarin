@@ -9,8 +9,8 @@ using Android.OS;
 
 using System.Net;
 
-using Kidozen;
-using Kidozen.Android;
+using KidoZen;
+using KidoZen.Client.Android;
 
 
 namespace AndroidPassive
@@ -36,14 +36,8 @@ namespace AndroidPassive
 				ServicePointManager.ServerCertificateValidationCallback = (x,w,y,z)=> true;
 
 				// Perform any additional setup after loading the view, typically from a nib.
-				var app = new KidoApplication("loadtests.qa.kidozen.com", "tasks", "NuSSOjO4d/4Zmm+lbG3ntlGkmeHCPn8x20cj82O4bIo=");
-				app.Authenticate(this).ContinueWith(r=> {
-					System.Diagnostics.Debug.WriteLine ("doPassive: " + r);
-
-					var ds = app.DataSource("GetCityWeather");
-					var result = ds.Query().Result;
-					System.Diagnostics.Debug.WriteLine ("ViewResult:" + result);
-				});
+				var app = new KZApplication("https://loadtests.qa.kidozen.com", "tasks", false);
+				app.Authenticate(this);
 				//System.Diagnostics.Debug.WriteLine (app.DoPassiveAuth(this).Result);
 
 			};

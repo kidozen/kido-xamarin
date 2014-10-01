@@ -42,14 +42,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
-    <Reference Include="kido.android">
-      <HintPath>..\..\Libraries\kido.android.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="kido">
-      <HintPath>..\..\Libraries\kido.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -67,4 +59,10 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\KidoZen.Client.Android\KidoZen.Client.Android.csproj">
+      <Project>{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}</Project>
+      <Name>KidoZen.Client.Android</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

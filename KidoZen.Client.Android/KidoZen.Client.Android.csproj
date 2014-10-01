@@ -175,6 +175,8 @@
     <Compile Include="..\src\DataSource.cs">
       <Link>DataSource.cs</Link>
     </Compile>
+    <Compile Include="Authentication\KZApplicationExtensions.cs" />
+    <Compile Include="Authentication\PassiveAuthActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
