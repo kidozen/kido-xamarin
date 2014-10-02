@@ -5,11 +5,24 @@ using System.Drawing;
 
 namespace Kidozen.Client.iOS
 {
+	public class AuthenticationResponseEventArgs : EventArgs {
+		public Boolean Success { get; set;}
+		public String Content { get; set;}
+	}
+	public delegate void AuthenticationResponse(object sender, AuthenticationResponseEventArgs e);
+
 	public class PassiveAuthViewController: UIViewController 
 	{
 		UIWebView webview;
 		NSUrl signInEndpoint;
 
+		public event AuthenticationResponse AuthenticationResponseArrived;
+
+		protected virtual void OnAuthenticationResponseArrived(AuthenticationResponseEventArgs e) 
+		{
+			if (AuthenticationResponseArrived != null)
+				AuthenticationResponseArrived(this, e);
+		}
 		public PassiveAuthViewController (String endpoint)
 		{
 			signInEndpoint = new NSUrl(endpoint);
@@ -24,6 +37,11 @@ namespace Kidozen.Client.iOS
 			webview.LoadFinished+= (object sender, EventArgs e) => {
 				var payload = webview.EvaluateJavascript("document.title");
 				Console.WriteLine(payload);
+				if (payload.Contains ("Success payload="))
+					OnAuthenticationResponseArrived (new AuthenticationResponseEventArgs { Success = true, Content = payload.Replace("Success payload=", String.Empty) });
+				else if (payload.Contains ("Error message="))
+					OnAuthenticationResponseArrived (new AuthenticationResponseEventArgs { Success = true, Content = payload.Replace("Error message=", String.Empty) });
+
 			};
 			this.View.AddSubview (webview);
 			webview.LoadRequest (new NSUrlRequest (this.signInEndpoint));

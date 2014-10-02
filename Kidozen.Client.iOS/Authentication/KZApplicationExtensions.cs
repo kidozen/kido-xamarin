@@ -24,9 +24,12 @@ namespace Kidozen.Client.iOS
 			var wv = new UINavigationController (authController);
 			UIApplication.SharedApplication.Delegate.Window.RootViewController.PresentViewController (wv, true, 
 				new NSAction(()=>{
-					Console.WriteLine("cargando");
+					Console.WriteLine("loading");
 				}));
-
+			authController.AuthenticationResponseArrived+= (object sender, AuthenticationResponseEventArgs e) => {
+				Console.WriteLine("*** Success : " + e.Success);
+				Console.WriteLine("*** Content : " + e.Content);
+			};
 		}
 	}
 }

@@ -296,7 +296,7 @@ Global
 		{EB999046-3CC2-4951-9387-23020D95ECF8} = {772EEE11-EBA2-4DCC-BB9B-A2290B8FD3B6}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = samples\android\AndroidPassive\AndroidPassive.csproj
+		StartupItem = samples\ios\Passive\Passive.csproj
 		version = 1.0.4
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
