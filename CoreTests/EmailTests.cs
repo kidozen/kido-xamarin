@@ -24,7 +24,7 @@ namespace KidoZen.Core.Tests
 			sw.Start();
 
 			if (app==null) {
-				app = new KZApplication(Constants.marketplace, Constants.application);
+				app = new KZApplication(Constants.marketplace, Constants.application,Constants.applicationKey);
 				app.Initialize().Wait();
 				app.Authenticate(Constants.user, Constants.pass, Constants.provider).Wait();
 			}

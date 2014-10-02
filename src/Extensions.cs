@@ -153,6 +153,30 @@ namespace KidoZen
             return result;
         }
 
+		//**** Passive Auth HotFix ****
+		internal static string refreshPassiveToken (Dictionary<string,string> passiveconfig)
+		{
+			var httpWebRequest = (HttpWebRequest)WebRequest.Create (passiveconfig["oauthTokenEndpoint"]);
+			httpWebRequest.ContentType = "text/json";
+			httpWebRequest.Method = "POST";
+
+			var message = new Dictionary<string,string> (passiveconfig);
+			message.Remove ("access_token");
+			message.Remove ("original_token");
+			using (var streamWriter = new StreamWriter (httpWebRequest.GetRequestStream ())) {
+				string json = JsonConvert.SerializeObject(message);
+
+				streamWriter.Write (json);
+				streamWriter.Flush ();
+				streamWriter.Close ();
+
+				var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse ();
+				using (var streamReader = new StreamReader (httpResponse.GetResponseStream ())) {
+					return streamReader.ReadToEnd ();
+				}
+			}
+		}
+
         internal static async Task<ServiceEvent<T>> ExecuteAsync<T>(this Uri uri, KZApplication app, Stream content = null, string method = "GET", bool cache = false, TimeSpan? timeout = null, Dictionary<string, string> headers = null, UseToken useToken = UseToken.Application, Action<long[]> onProgress = null, bool cors = false)
         {
             Request request = null;
@@ -204,7 +228,14 @@ namespace KidoZen
                             {
 								//**** Passive Auth HotFix ****
 								if (app.PassiveAuthenticationInformation!=null) {
+									var newAuthToken = refreshPassiveToken(app.PassiveAuthenticationInformation);
+									request.Headers["Authorization"] = "WRAP access_token=\"" + newAuthToken + "\"";
+									request.Content.Seek(0, SeekOrigin.Begin);
 
+									// Send request
+									response = (method == "POST" || method == "GET" || method == "PUT") ?
+										await request.Send_POST_GET_PUT(onProgress) :
+										await request.Send_OTHERS(onProgress);
 								}
 								else {
 	                                // Do refresh tokens

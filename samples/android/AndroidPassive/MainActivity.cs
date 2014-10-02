@@ -34,7 +34,7 @@ namespace AndroidPassive
 				ServicePointManager.ServerCertificateValidationCallback = (x,w,y,z)=> true;
 
 				// Perform any additional setup after loading the view, typically from a nib.
-				kidoApp = new KZApplication("https://loadtests.qa.kidozen.com", "tasks", false);
+				kidoApp = new KZApplication("https://loadtests.qa.kidozen.com", "tasks", "NuSSOjO4d/4Zmm+lbG3ntlGkmeHCPn8x20cj82O4bIo=");
 				kidoApp.Authenticate(this);
 			};
 			Button dsButton = FindViewById<Button> (Resource.Id.button1);

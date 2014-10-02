@@ -14,7 +14,7 @@ namespace KidoZen.Core.Tests
 		public void ShouldInitialize ()
 		{
 			//arrange
-			var app = new KZApplication(Constants.marketplace, Constants.application);
+			var app = new KZApplication(Constants.marketplace, Constants.application, Constants.applicationKey);
 			//act
 			app.Initialize().Wait();
 			//assert
@@ -25,7 +25,7 @@ namespace KidoZen.Core.Tests
 		public void ShouldAuthenticate ()
 		{
 			//arrange
-			var app = new KZApplication(Constants.marketplace, Constants.application);
+			var app = new KZApplication(Constants.marketplace, Constants.application,Constants.applicationKey);
 			app.Initialize().Wait();
 			//act
 			var user = app.Authenticate(Constants.user, Constants.pass, Constants.provider).Result;

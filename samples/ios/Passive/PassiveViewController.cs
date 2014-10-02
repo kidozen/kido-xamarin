@@ -55,7 +55,7 @@ namespace Passive
 		partial void   UIButton5_TouchUpInside (UIButton sender)
 		{
 			ServicePointManager.ServerCertificateValidationCallback = (x,w,y,z)=> true;
-			kidozenApp = new KZApplication("https://loadtests.qa.kidozen.com", "tasks",false);
+			kidozenApp = new KZApplication("https://loadtests.qa.kidozen.com", "tasks","NuSSOjO4d/4Zmm+lbG3ntlGkmeHCPn8x20cj82O4bIo=");
 			kidozenApp.Authenticate();
 		}
 

@@ -43,24 +43,23 @@ namespace KidoZen
 
 		public event OnEventHandler OnInitialization;
 		public event OnEventHandler OnAuthentication;
-		private Boolean _bypassSSL;
+		internal String applicationKey;
 
 		internal JObject ApplicationConfiguration;
 
-        public KZApplication(string marketPlaceUri, string name, Boolean bypassSSL=true)
+		public KZApplication(string marketPlaceUri, string name, String appicationKey)
         {
             Name = name;
             this.marketPlaceUri = new Uri(marketPlaceUri);
             this.Initialized= false;
             this.Authenticated = false;
-			_bypassSSL = bypassSSL;
+			applicationKey = appicationKey;
         }
 
         public async Task Initialize()
         {
             try
             {
-				ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) =>_bypassSSL;
                 lock (sync)
                 {
                     if (IsInitializing)
