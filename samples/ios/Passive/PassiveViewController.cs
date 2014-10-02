@@ -51,25 +51,19 @@ namespace Passive
             base.ViewDidDisappear(animated);
         }
 
-
+		KZApplication kidozenApp;
 		partial void   UIButton5_TouchUpInside (UIButton sender)
 		{
-			var nn = UIApplication.SharedApplication.Delegate.Window.RootViewController;
 			ServicePointManager.ServerCertificateValidationCallback = (x,w,y,z)=> true;
+			kidozenApp = new KZApplication("https://loadtests.qa.kidozen.com", "tasks",false);
+			kidozenApp.Authenticate();
+		}
 
-			// Perform any additional setup after loading the view, typically from a nib.
-			var app = new KZApplication("https://loadtests.qa.kidozen.com", "tasks",false);
-			app.Authenticate();
-			/*
-			app.Authenticate().ContinueWith(r=> {
-				System.Diagnostics.Debug.WriteLine ("result:" + r.Result);
-				var ds = app.DataSource("GetCityWeather");
-				var result = ds.Query().Result;
-				System.Diagnostics.Debug.WriteLine ("ViewResult:" + result);
-
-			});
-			*/
-			//System.Diagnostics.Debug.WriteLine (app.Login().Result);
+		partial void UIButton10_TouchUpInside (UIButton sender)
+		{
+			DataSource ds = kidozenApp.DataSource["GetCityWeather"];
+			var result = ds.Query().Result;
+			System.Diagnostics.Debug.WriteLine ("ViewResult:" + result.Data);
 		}
         #endregion
     }

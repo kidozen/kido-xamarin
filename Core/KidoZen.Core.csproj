@@ -159,6 +159,7 @@
     <None Include="..\src\resources\SOAPRSTTemplate.xml">
       <Link>resources\SOAPRSTTemplate.xml</Link>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -168,7 +169,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\libraries\json.net-4.5.11\mono\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

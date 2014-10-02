@@ -27,18 +27,21 @@ namespace AndroidPassive
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
+			KZApplication kidoApp = null;
 			Button button = FindViewById<Button> (Resource.Id.myButton);
-			
 			button.Click += delegate {
 				button.Text = string.Format ("{0} clicks!", count++);
 				ServicePointManager.ServerCertificateValidationCallback = (x,w,y,z)=> true;
 
 				// Perform any additional setup after loading the view, typically from a nib.
-				var app = new KZApplication("https://loadtests.qa.kidozen.com", "tasks", false);
-				app.Authenticate(this);
-				//System.Diagnostics.Debug.WriteLine (app.DoPassiveAuth(this).Result);
+				kidoApp = new KZApplication("https://loadtests.qa.kidozen.com", "tasks", false);
+				kidoApp.Authenticate(this);
+			};
+			Button dsButton = FindViewById<Button> (Resource.Id.button1);
+			dsButton.Click+= delegate {
+				DataSource ds = kidoApp.DataSource["GetCityWeather"];
+				var result = ds.Query().Result;
+				System.Diagnostics.Debug.WriteLine ("ViewResult:" + result.Data);
 
 			};
 		}

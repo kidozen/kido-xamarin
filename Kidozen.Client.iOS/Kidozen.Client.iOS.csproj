@@ -157,8 +157,8 @@
     <Compile Include="..\src\DataSource.cs">
       <Link>DataSource.cs</Link>
     </Compile>
-    <Compile Include="Authentication\KZApplicationExtensions.cs" />
-    <Compile Include="Authentication\PassiveAuthViewController.cs" />
+    <Compile Include="Authentication\passive\PassiveAuthViewController.cs" />
+    <Compile Include="Authentication\passive\PassiveAuthenticationExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -170,8 +170,14 @@
       <HintPath>..\libraries\websocket-sharp\mono\websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\libraries\json.net-4.5.11\ios\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Authentication\passive\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

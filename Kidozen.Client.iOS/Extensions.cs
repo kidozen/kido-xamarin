@@ -172,11 +172,17 @@ namespace KidoZen
 				if(timeout!=null && timeout.HasValue) 
 					headers.Add("timeout",timeout.Value.TotalSeconds.ToString());
 
-                // Adds authentication's header
-                if (useToken != UseToken.None && app != null && app.Authentication != null && app.Authentication.User != null)
-                {
-                    addAuthenticationHeader(app, useToken, headers);
-                }
+				//**** Passive Auth HotFix ****
+				if (app.PassiveAuthenticationInformation!=null) {
+					headers["Authorization"] = "WRAP access_token=\"" + app.PassiveAuthenticationInformation["access_token"] + "\"";
+				}
+				else {
+					// Adds authentication's header
+					if (useToken != UseToken.None && app != null && app.Authentication != null && app.Authentication.User != null)
+					{
+						addAuthenticationHeader(app, useToken, headers);
+					}
+				}
 
                 request = await Request.Create(uri, method.ToUpper(), content, headers, timeout);
                 response = (method=="POST" || method=="GET" || method=="PUT")?
@@ -199,18 +205,24 @@ namespace KidoZen
                             var message = realm.Split('=')[1].Trim();
                             if (string.Compare(message, "\"Token is expired\"", StringComparison.CurrentCultureIgnoreCase) == 0)
                             {
-                                // Do refresh tokens
-                                app.Authentication.RemoveFromCache(app.User.Credential.UserName, app.User.Credential.Password, app.User.Provider);
-                                await app.Authentication.Authenticate(app.User.Credential.UserName, app.User.Credential.Password, app.User.Provider);
+								//**** Passive Auth HotFix ****
+								if (app.PassiveAuthenticationInformation!=null) {
 
-                                // Set new auth header
-                                addAuthenticationHeader(app, useToken, request.Headers);
-                                request.Content.Seek(0, SeekOrigin.Begin);
-                                
-                                // Send request
-                                response = (method == "POST" || method == "GET" || method == "PUT") ?
-                                    await request.Send_POST_GET_PUT(onProgress) :
-                                    await request.Send_OTHERS(onProgress);
+								}
+								else {
+									// Do refresh tokens
+									app.Authentication.RemoveFromCache(app.User.Credential.UserName, app.User.Credential.Password, app.User.Provider);
+									await app.Authentication.Authenticate(app.User.Credential.UserName, app.User.Credential.Password, app.User.Provider);
+
+									// Set new auth header
+									addAuthenticationHeader(app, useToken, request.Headers);
+									request.Content.Seek(0, SeekOrigin.Begin);
+
+									// Send request
+									response = (method == "POST" || method == "GET" || method == "PUT") ?
+										await request.Send_POST_GET_PUT(onProgress) :
+										await request.Send_OTHERS(onProgress);
+								}
                             }
                         }
                     }

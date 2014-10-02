@@ -6,9 +6,9 @@ using MonoTouch.Foundation;
 
 namespace Kidozen.Client.iOS
 {
-	public static class KZApplicationExtensions
+	public static class PassiveAuthenticationExtensions
 	{
-		private static string Validate(JObject config, string property)
+		internal static string Validate(JObject config, string property)
 		{
 			var authconfig = config.Value<JObject> ("authConfig");
 			var data = authconfig.Value<string>(property);
@@ -28,7 +28,12 @@ namespace Kidozen.Client.iOS
 				}));
 			authController.AuthenticationResponseArrived+= (object sender, AuthenticationResponseEventArgs e) => {
 				Console.WriteLine("*** Success : " + e.Success);
-				Console.WriteLine("*** Content : " + e.Content);
+				if(e.Success) {
+					application.PassiveAuthenticationInformation = e.TokenInfo;
+				}
+				else {
+					//TODO: display alert
+				}
 			};
 		}
 	}

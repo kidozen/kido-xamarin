@@ -5,10 +5,10 @@ using Android.Content;
 
 namespace KidoZen.Client.Android
 {
-	public static class KZApplicationExtensions
+	public static class PassiveAuthenticationExtensions
 	{
 		static Context appContext;
-		private static string Validate(JObject config, string property)
+		internal static string Validate(JObject config, string property)
 		{
 			var authconfig = config.Value<JObject> ("authConfig");
 			var data = authconfig.Value<string>(property);
@@ -21,16 +21,21 @@ namespace KidoZen.Client.Android
 			appContext = context;
 			if (!application.Initialized) application.Initialize ().Wait ();
 			var signInUrl = Validate (application.ApplicationConfiguration, "signInUrl");
-			startActivity (signInUrl);
-		}
 
-		private static void startActivity (String signInUrl) {
 			var startPassiveAuth = new Intent(appContext, typeof(PassiveAuthActivity));
 			startPassiveAuth.AddFlags(ActivityFlags.NewTask);
 			startPassiveAuth.PutExtra("signInUrl", signInUrl);
 			appContext.StartActivity(startPassiveAuth);
+			AuthenticationEventManager.AuthenticationResponseArrived+= (object sender, AuthenticationResponseEventArgs e) => {
+				Console.WriteLine("*** Success : " + e.Success);
+				if(e.Success) {
+					application.PassiveAuthenticationInformation = e.TokenInfo;
+				}
+				else {
+					//TODO: display alert
+				}
+			};
 		}
 	}
-
 }
 

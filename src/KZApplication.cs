@@ -12,6 +12,8 @@ namespace KidoZen
 {
     public class KZApplication 
     {
+		public Dictionary<string,string> PassiveAuthenticationInformation;
+
         readonly Uri marketPlaceUri;
         readonly object sync = new object();
 #if !NET45

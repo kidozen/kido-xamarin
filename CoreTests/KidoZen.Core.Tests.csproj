@@ -32,10 +32,10 @@
     <Reference Include="System" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\libraries\json.net-4.5.11\mono\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KZApplicationTests.cs" />
@@ -55,5 +55,8 @@
       <Project>{58E0303B-84A3-4B1F-B992-2E2D48C5E019}</Project>
       <Name>KidoZen.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

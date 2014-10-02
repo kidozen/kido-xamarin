@@ -2,13 +2,20 @@
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
 using System.Drawing;
+using System.Text;
+using System.Collections.Generic;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Kidozen.Client.iOS
 {
 	public class AuthenticationResponseEventArgs : EventArgs {
 		public Boolean Success { get; set;}
-		public String Content { get; set;}
+		public String ErrorMessage { get; set;}
+		public Dictionary<string,string> TokenInfo { get; set;}
 	}
+
 	public delegate void AuthenticationResponse(object sender, AuthenticationResponseEventArgs e);
 
 	public class PassiveAuthViewController: UIViewController 
@@ -38,10 +45,15 @@ namespace Kidozen.Client.iOS
 				var payload = webview.EvaluateJavascript("document.title");
 				Console.WriteLine(payload);
 				if (payload.Contains ("Success payload="))
-					OnAuthenticationResponseArrived (new AuthenticationResponseEventArgs { Success = true, Content = payload.Replace("Success payload=", String.Empty) });
-				else if (payload.Contains ("Error message="))
-					OnAuthenticationResponseArrived (new AuthenticationResponseEventArgs { Success = true, Content = payload.Replace("Error message=", String.Empty) });
-
+				{
+					payload = Encoding.UTF8.GetString(Convert.FromBase64String( payload.Replace("Success payload=", String.Empty)));
+					var rawToken = JsonConvert.DeserializeObject<Dictionary<string,string>>(payload);
+					OnAuthenticationResponseArrived (new AuthenticationResponseEventArgs { Success = true, TokenInfo = rawToken });
+					this.InvokeOnMainThread( ()=> (UIApplication.SharedApplication.Delegate.Window.RootViewController.DismissViewController(true, null))) ;
+				}
+				else if (payload.Contains ("Error message=")) {
+					OnAuthenticationResponseArrived (new AuthenticationResponseEventArgs { Success = true, ErrorMessage = payload.Replace("Error message=", String.Empty) });
+				}
 			};
 			this.View.AddSubview (webview);
 			webview.LoadRequest (new NSUrlRequest (this.signInEndpoint));
