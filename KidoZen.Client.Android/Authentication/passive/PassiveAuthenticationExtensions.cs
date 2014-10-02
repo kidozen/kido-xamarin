@@ -34,13 +34,13 @@ namespace KidoZen.Client.Android
 				Validate (KidozenApplicationConfig, "domain")
 			);
 			PassiveAuthSettings.Add ("scope", 
-				Validate (KidozenApplicationConfig, "applicationScope")
+				Validate (KidozenApplicationConfig.Value<JObject> ("authConfig"), "applicationScope")
 			);
 			PassiveAuthSettings.Add ("oauthTokenEndpoint", 
-				Validate (KidozenApplicationConfig, "oauthTokenEndpoint")
+				Validate (KidozenApplicationConfig.Value<JObject> ("authConfig"), "oauthTokenEndpoint")
 			);
 
-			var signInUrl = Validate (application.ApplicationConfiguration, "signInUrl");
+			var signInUrl = Validate (application.ApplicationConfiguration.Value<JObject> ("authConfig"), "signInUrl");
 
 			var startPassiveAuth = new Intent(appContext, typeof(PassiveAuthActivity));
 			startPassiveAuth.AddFlags(ActivityFlags.NewTask);

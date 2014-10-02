@@ -33,10 +33,10 @@ namespace Kidozen.Client.iOS
 				Validate (KidozenApplicationConfig, "domain")
 			);
 			PassiveAuthSettings.Add ("scope", 
-				Validate (KidozenApplicationConfig, "applicationScope")
+				Validate (KidozenApplicationConfig.Value<JObject> ("authConfig"), "applicationScope")
 			);
 			PassiveAuthSettings.Add ("oauthTokenEndpoint", 
-				Validate (KidozenApplicationConfig, "oauthTokenEndpoint")
+				Validate (KidozenApplicationConfig.Value<JObject> ("authConfig"), "oauthTokenEndpoint")
 			);
 
 			var signInUrl = Validate (KidozenApplicationConfig.Value<JObject> ("authConfig"), "signInUrl");
