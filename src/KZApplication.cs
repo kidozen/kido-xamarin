@@ -33,10 +33,10 @@ namespace KidoZen
         public Service Service { get; private set; }
 		public DataSource DataSource { get; private set; }
 
-        public bool IsInitializing { get; private set; }
-        public bool Initialized { get; private set; }
-        public bool Authenticated { get; private set; }
-        public bool IsAuthenticating { get; private set; }
+		public bool IsInitializing { get; internal set; }
+		public bool Initialized { get; internal set; }
+		public bool Authenticated { get; internal set; }
+		public bool IsAuthenticating { get; internal set; }
         public KZUser User { get { return Authentication.User; } }
 
         public delegate void OnEventHandler (object sender, EventArgs e);

@@ -21,10 +21,11 @@ namespace KidoZen.Client.Android
 			return data;
 		}
 
-		public static void Authenticate (this KZApplication application, Context context)
+		public static void Authenticate (this KZApplication application, Context context, KZApplication.OnEventHandler onAuthFinish)
 		{
 			appContext = context;
 			if (!application.Initialized) application.Initialize ().Wait ();
+			PassiveAuthSettings = new Dictionary<string, string>();
 
 			KidozenApplicationConfig = application.ApplicationConfiguration;
 
@@ -48,11 +49,15 @@ namespace KidoZen.Client.Android
 			appContext.StartActivity(startPassiveAuth);
 			AuthenticationEventManager.AuthenticationResponseArrived+= (object sender, AuthenticationResponseEventArgs e) => {
 				Console.WriteLine("*** Success : " + e.Success);
+				application.Authenticated = e.Success;
 				if(e.Success) {
 					application.PassiveAuthenticationInformation = e.TokenInfo;
 				}
 				else {
 					//TODO: display alert
+				}
+				if(onAuthFinish!=null) {
+					onAuthFinish.Invoke(application, e);
 				}
 			};
 		}

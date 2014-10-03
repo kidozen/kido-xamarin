@@ -15,9 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{FEFFF448-D0A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passive", "samples\ios\Passive\Passive.csproj", "{BB08A805-A733-4DC4-B355-191CC5543D10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.iOS", "samples\ios\Todo\Todo.iOS.csproj", "{27ACF4F4-862F-46C6-99B5-A0567B884F43}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{772EEE11-EBA2-4DCC-BB9B-A2290B8FD3B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidPassive", "samples\android\AndroidPassive\AndroidPassive.csproj", "{EB999046-3CC2-4951-9387-23020D95ECF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{58A44634-23DA-4CC9-94C3-73BC626071E4}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Todo", "samples\shared\Todo\Todo.shproj", "{EAC7244C-09D6-4922-A662-58743AE6D868}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +92,48 @@ Global
 		{0C1D7BCF-67FB-43E2-B091-8432C78D8154}.Release|x64.Build.0 = Release|Any CPU
 		{0C1D7BCF-67FB-43E2-B091-8432C78D8154}.Release|x86.ActiveCfg = Release|Any CPU
 		{0C1D7BCF-67FB-43E2-B091-8432C78D8154}.Release|x86.Build.0 = Release|Any CPU
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug_Ubuntu|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug_Ubuntu|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|ARM.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|ARM.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|iPhone.Build.0 = Debug|iPhone
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|Mixed Platforms.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|Mixed Platforms.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|Win32.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|Win32.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|x64.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|x64.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|x86.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Debug|x86.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Default|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Default|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release_Ubuntu|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release_Ubuntu|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|ARM.ActiveCfg = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|ARM.Build.0 = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|iPhone.ActiveCfg = Release|iPhone
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|iPhone.Build.0 = Release|iPhone
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|Mixed Platforms.ActiveCfg = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|Mixed Platforms.Build.0 = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|Win32.ActiveCfg = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|Win32.Build.0 = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|x64.ActiveCfg = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|x64.Build.0 = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|x86.ActiveCfg = Release|iPhoneSimulator
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43}.Release|x86.Build.0 = Release|iPhoneSimulator
 		{58E0303B-84A3-4B1F-B992-2E2D48C5E019}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
 		{58E0303B-84A3-4B1F-B992-2E2D48C5E019}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
 		{58E0303B-84A3-4B1F-B992-2E2D48C5E019}.AppStore|iPhone.ActiveCfg = Release|Any CPU
@@ -292,12 +340,19 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FEFFF448-D0A0-4295-9D02-78211B9ECEFE} = {E89AA7CC-CC11-449D-96F6-C419636B7923}
 		{772EEE11-EBA2-4DCC-BB9B-A2290B8FD3B6} = {E89AA7CC-CC11-449D-96F6-C419636B7923}
+		{58A44634-23DA-4CC9-94C3-73BC626071E4} = {E89AA7CC-CC11-449D-96F6-C419636B7923}
 		{BB08A805-A733-4DC4-B355-191CC5543D10} = {FEFFF448-D0A0-4295-9D02-78211B9ECEFE}
+		{27ACF4F4-862F-46C6-99B5-A0567B884F43} = {FEFFF448-D0A0-4295-9D02-78211B9ECEFE}
 		{EB999046-3CC2-4951-9387-23020D95ECF8} = {772EEE11-EBA2-4DCC-BB9B-A2290B8FD3B6}
+		{EAC7244C-09D6-4922-A662-58743AE6D868} = {58A44634-23DA-4CC9-94C3-73BC626071E4}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = samples\ios\Passive\Passive.csproj
-		version = 1.0.4
+		StartupItem = samples\ios\Todo\Todo.iOS.csproj
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		version = 1.2.0
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
