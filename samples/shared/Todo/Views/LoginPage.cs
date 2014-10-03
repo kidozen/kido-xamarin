@@ -9,7 +9,7 @@ using System.Diagnostics;
 #if __IOS__
 using Kidozen.Client.iOS;
 #else
-using Kidozen.Client.Android;
+using KidoZen.Client.Android;
 #endif
 
 namespace Todo

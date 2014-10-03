@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Android", "Todo.Android.csproj", "{0286BCC0-AAC9-492B-A940-A1260837ECDE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Todo", "..\..\shared\Todo\Todo.shproj", "{EAC7244C-09D6-4922-A662-58743AE6D868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidoZen.Client.Android", "..\..\..\KidoZen.Client.Android\KidoZen.Client.Android.csproj", "{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0286BCC0-AAC9-492B-A940-A1260837ECDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0286BCC0-AAC9-492B-A940-A1260837ECDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0286BCC0-AAC9-492B-A940-A1260837ECDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0286BCC0-AAC9-492B-A940-A1260837ECDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FBDA777-5C66-441C-9AA2-7F4BCD41413A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Todo.Android.csproj
+	EndGlobalSection
+EndGlobal
