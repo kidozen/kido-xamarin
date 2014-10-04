@@ -48,7 +48,7 @@ namespace Todo
 		public IEnumerable<TodoItem> GetItemsNotDone ()
 		{
 			lock (locker) {
-				return  database.All<TodoItem>().Result.Data;
+				return  database.Query<TodoItem>(@"{""Done"":false}").Result.Data;
 			}
 		}
 

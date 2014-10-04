@@ -194,7 +194,7 @@ namespace KidoZen
                 }
 
 				//**** Passive Auth HotFix ****
-				if (app.PassiveAuthenticationInformation!=null) {
+				if (app != null && app.PassiveAuthenticationInformation!=null) {
 					headers["Authorization"] = "WRAP access_token=\"" + app.PassiveAuthenticationInformation["access_token"] + "\"";
 				}
 				else {
@@ -227,7 +227,7 @@ namespace KidoZen
                             if (string.Compare(message, "\"Token is expired\"", StringComparison.CurrentCultureIgnoreCase) == 0)
                             {
 								//**** Passive Auth HotFix ****
-								if (app.PassiveAuthenticationInformation!=null) {
+								if (app != null && app.PassiveAuthenticationInformation!=null) {
 									var newAuthToken = refreshPassiveToken(app.PassiveAuthenticationInformation);
 									request.Headers["Authorization"] = "WRAP access_token=\"" + newAuthToken + "\"";
 									request.Content.Seek(0, SeekOrigin.Begin);

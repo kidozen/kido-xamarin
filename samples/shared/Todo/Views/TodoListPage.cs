@@ -91,6 +91,7 @@ namespace Todo
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
+
 			listView.ItemsSource = App.Database.GetItems ();
 		}
 	}

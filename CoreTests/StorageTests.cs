@@ -18,6 +18,8 @@ namespace KidoZen.Core.Tests
 		public void SetUp ()
 		{
 			Console.WriteLine ("Setting up");
+			ServicePointManager.ServerCertificateValidationCallback = (x,w,y,z)=> true;
+
 			if (app==null) {
 				app = new KZApplication(Constants.marketplace, Constants.application, Constants.applicationKey);
 				app.Initialize().Wait();
