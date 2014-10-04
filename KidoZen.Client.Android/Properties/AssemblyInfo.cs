@@ -6,13 +6,13 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KidoZen.Client.Android")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Kidozen.Client.Android")]
+[assembly: AssemblyDescription("KidoZen client libraries for Xamarin Android")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KidoZen.Client.Android")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("KidoZen Inc")]
+[assembly: AssemblyProduct("Kidozen.Client.Android")]
+[assembly: AssemblyCopyright("2014 KidoZen, Inc. All rights reserved.")]
+[assembly: AssemblyTrademark("KidoZen is a trademark of KidoZen, Inc.")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 
@@ -26,8 +26,8 @@ using Android.App;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.3")]
-[assembly: AssemblyFileVersion("1.0.3")]
+[assembly: AssemblyVersion("1.2.0")]
+[assembly: AssemblyFileVersion("1.2.0")]
 
 // Add some common permissions, these can be removed if not needed
 [assembly: UsesPermission(Android.Manifest.Permission.Internet)]
