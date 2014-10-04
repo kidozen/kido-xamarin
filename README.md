@@ -13,9 +13,11 @@ To get Your Credentials Register in [kidozen.com](http://kidozen.com).
 ##
 Minimum requirements for using the KidoZen SDK for Xamarin are:
 
-- Xamarin Studio 4.0.12 (build 3) 
-	
-- Visual Studio 2012 with Xamarin Studio Add-ond
+- Xamarin Studio 5.4
+- Android SDK Version 17 or above 
+
+##    Whats new?
+##    Passive authentication support.
 
 ##    About the Unit Tests
 ##
