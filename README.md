@@ -19,8 +19,8 @@ Minimum requirements for using the KidoZen SDK for Xamarin are:
 - Android SDK Version 17 or above 
 
 ##    Whats new?
-      Passive authentication support.
-      For more information [check this link](http://docs.kidozen.com/?p=3087)
+Passive authentication support.
+For more information [check this link](http://docs.kidozen.com/?p=3087)
       
 
 ##    About the Unit Tests
