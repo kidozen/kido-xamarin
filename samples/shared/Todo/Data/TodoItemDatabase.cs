@@ -17,16 +17,11 @@ namespace Todo
 	{
 		static object locker = new object ();
 		KZApplication kidozenApplication;
-
 		Storage database;
-
-		string Marketplace = "https://loadtests.qa.kidozen.com";
-		string Application = "tasks";
-		string Key = "NuSSOjO4d/4Zmm+lbG3ntlGkmeHCPn8x20cj82O4bIo=";
 
 		public TodoItemDatabase()
 		{
-			this.kidozenApplication = new KZApplication (Marketplace, Application, Key);
+			this.kidozenApplication = new KZApplication (Settings.Marketplace, Settings.Application, Settings.Key);
 		}
 
 		public void Login(KZApplication.OnEventHandler onAuthFinish) {
