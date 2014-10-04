@@ -55,14 +55,14 @@ namespace Todo
 		public void SaveItem (TodoItem item) 
 		{
 			lock (locker) {
-				database.Save (item); //upsert
+				database.Save<TodoItem>(item); //upsert
 			}
 		}
 
 		public void DeleteItem(string id)
 		{
 			lock (locker) {
-				database.Delete(id);
+				database.Delete(id).RunSynchronously();
 			}
 		}
 	}

@@ -94,6 +94,12 @@ namespace Todo
 
 			listView.ItemsSource = App.Database.GetItems ();
 		}
+
+		protected override void OnDisappearing ()
+		{
+			listView.ItemsSource = new string [1] {""};
+
+		}
 	}
 }
 

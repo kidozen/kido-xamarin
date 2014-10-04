@@ -392,7 +392,7 @@ Global
 		{EAC7244C-09D6-4922-A662-58743AE6D868} = {58A44634-23DA-4CC9-94C3-73BC626071E4}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = samples\ios\Todo\Todo.iOS.csproj
+		StartupItem = samples\android\Todo\Todo.Android.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
