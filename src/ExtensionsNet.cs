@@ -36,9 +36,9 @@ namespace KidoZen
                 req.AddHeaders(request.Headers);
                 if (request.Content != null && request.Content.Length > 0)
                 {
-                    var reqStream = await Task.Factory.FromAsync<Stream>(req.BeginGetRequestStream, req.EndGetRequestStream, null);
-                    await request.Content.CopyToAsync(reqStream);
-                    await reqStream.FlushAsync();
+					var reqStream = Task.Factory.FromAsync<Stream>(req.BeginGetRequestStream, req.EndGetRequestStream, null).Result;
+					request.Content.CopyTo(reqStream);
+                    reqStream.Flush();
                 }
 
 				//var res = (HttpWebResponse) await Task.Factory.FromAsync<WebResponse>(req.BeginGetResponse, req.EndGetResponse, null);

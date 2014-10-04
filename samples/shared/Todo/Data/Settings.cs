@@ -4,9 +4,9 @@ namespace Todo
 {
 	public class Settings
 	{
-		public static string Marketplace = "https://loadtests.qa.kidozen.com";
+		public static string Marketplace = "https://testssl.kidocloud.com";
 		public static string Application = "tasks";
-		public static string Key = "NuSSOjO4d/4Zmm+lbG3ntlGkmeHCPn8x20cj82O4bIo=";
+		public static string Key = "upTbyOhvjn7/D2jia1D5LkzI66Di4HBoyf4AMFjkZN0=";
 	}
 }
 

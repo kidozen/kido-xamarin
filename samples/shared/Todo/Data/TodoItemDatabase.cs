@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
+using Newtonsoft.Json.Linq;
+
 using KidoZen;
+
 #if __IOS__
 using Kidozen.Client.iOS;
 #else
@@ -18,6 +21,7 @@ namespace Todo
 		static object locker = new object ();
 		KZApplication kidozenApplication;
 		Storage database;
+		DataSource queryDataSource, saveDataSource;
 
 		public TodoItemDatabase()
 		{
@@ -31,19 +35,29 @@ namespace Todo
 			this.kidozenApplication.Authenticate (onAuthFinish);
 			#endif
 			database = kidozenApplication.Storage["todo"];
-		}
+			queryDataSource = kidozenApplication.DataSource["QueryTodo"];
+			saveDataSource = kidozenApplication.DataSource["AddTodo"];
 
-		public IEnumerable<TodoItem> GetItems ()
-		{
-			lock (locker) {
-				return  database.All<TodoItem>().Result.Data;
-			}
 		}
 
 		public IEnumerable<TodoItem> GetItemsNotDone ()
 		{
 			lock (locker) {
 				return  database.Query<TodoItem>(@"{""Done"":false}").Result.Data;
+			}
+		}
+
+		public void DeleteItem(string id)
+		{
+			lock (locker) {
+				database.Delete(id).RunSynchronously();
+			}
+		}
+
+		public IEnumerable<TodoItem> GetItems ()
+		{
+			lock (locker) {
+				return  database.All<TodoItem>().Result.Data;
 			}
 		}
 
@@ -54,12 +68,37 @@ namespace Todo
 			}
 		}
 
-		public void DeleteItem(string id)
+		// ******************************
+		// *** DataSource sample code ***
+		// ******************************
+		/*
+		public IEnumerable<TodoItem> GetItems ()
 		{
 			lock (locker) {
-				database.Delete(id).RunSynchronously();
+				var results = queryDataSource.Query().Result.Data;
+				return createTodoItemList (results);
 			}
 		}
+
+		//Ensure that your DataSource can execute an UPSERT
+		public void SaveItem (TodoItem item) 
+		{
+			lock (locker) {
+				var result = saveDataSource.Invoke(item).Result;
+			}
+		}
+
+		IEnumerable<TodoItem> createTodoItemList (JObject results)
+		{
+			var result = JArray.Parse (results.SelectToken("data").ToString());
+			return result.Select ( todo => new TodoItem {
+				Name = todo.Value<string>("Name"),
+				Notes = todo.Value<string>("Notes") ,
+				_id = todo.Value<string>("_id") ,
+			}
+			).ToList();
+		}
+		*/
 	}
 }
 

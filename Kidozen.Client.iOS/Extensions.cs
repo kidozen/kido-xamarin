@@ -138,7 +138,7 @@ namespace KidoZen
                 writer = new StreamWriter(stream);
                 
                 content.SerializeJson(writer);
-                await writer.FlushAsync();
+                writer.Flush();
                 stream.Seek(0, SeekOrigin.Begin);
 
                 if (headers == null) headers = new Dictionary<string, string>();

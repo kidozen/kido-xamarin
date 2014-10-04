@@ -56,7 +56,13 @@ namespace KidoZen
 		public async Task<ServiceEvent<JObject>> Invoke<T>( T args)
 		{
 			Validate();
-			return await Url.ExecuteAsync<JObject>(app, args.ToJToken(), "POST");
+			var obj = args.ToJToken() as JObject;
+			if (obj == null) throw new ArgumentException("Value must be an object, it could not be a value type.", "value");
+
+			//return await Url.ExecuteAsync<JObject>(app, obj, "POST");
+
+			return await new Uri(Url,"").ExecuteAsync<JObject>(app, obj, "POST");
+
 		}
 
 		public async Task<ServiceEvent<JObject>> Query()
