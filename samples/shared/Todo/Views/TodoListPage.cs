@@ -21,16 +21,6 @@ namespace Todo
 			};
 			listView.ItemTemplate = new DataTemplate (typeof (TodoItemCell));
 
-			// These commented-out lines were used to test the ListView prior to integrating the database
-//			listView.ItemSource = new string [] { "Buy pears", "Buy oranges", "Buy mangos", "Buy apples", "Buy bananas" };
-//			listView.ItemSource = new TodoItem [] { 
-//				new TodoItem {Name = "Buy pears`"}, 
-//				new TodoItem {Name = "Buy oranges`", Done=true},
-//				new TodoItem {Name = "Buy mangos`"}, 
-//				new TodoItem {Name = "Buy apples`", Done=true},
-//				new TodoItem {Name = "Buy bananas`", Done=true}
-//			};
-
 			// HACK: workaround issue #894 for now
 			if (Device.OS == TargetPlatform.iOS)
 				listView.ItemsSource = new string [1] {""};

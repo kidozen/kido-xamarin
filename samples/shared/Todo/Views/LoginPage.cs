@@ -10,13 +10,14 @@ using System.Diagnostics;
 using Kidozen.Client.iOS;
 #else
 using KidoZen.Client.Android;
+using Android.Content;
 #endif
 
 namespace Todo
 {
 	public class LoginPage : ContentPage
 	{
-		public LoginPage ()
+		public LoginPage (KidoZen.KZApplication.OnEventHandler onAuthFinish)
 		{
 			Title = "Todo";
 
@@ -24,7 +25,7 @@ namespace Todo
 
 			var loginButton = new Button { Text = "LogIn" };
 			loginButton.Clicked += (sender, e) => {
-				App.Database.Login(onKidoZenPassiveAuthenticationFinish);
+				App.Database.Login(onAuthFinish);
 			};
 
 			Content = new StackLayout {
@@ -36,13 +37,16 @@ namespace Todo
 			};
 		}
 
-		internal void onKidoZenPassiveAuthenticationFinish(Object sender, EventArgs e ) {
-			var isAuthenticated =(e as AuthenticationResponseEventArgs).Success;
-			if(isAuthenticated) {
-				var todoListPage = new TodoListPage();
-				this.Navigation.PushAsync(todoListPage);
-			}
+		protected override void OnAppearing ()
+		{
+			Console.Write ("appearing");
 		}
+
+		protected override void OnDisappearing ()
+		{
+			Console.Write ("dis appearing");
+		}
+
 	}
 }
 

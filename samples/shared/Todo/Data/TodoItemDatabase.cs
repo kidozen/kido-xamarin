@@ -8,6 +8,7 @@ using KidoZen;
 using Kidozen.Client.iOS;
 #else
 using KidoZen.Client.Android;
+using Android.Content;
 #endif
 
 namespace Todo
@@ -28,17 +29,14 @@ namespace Todo
 			this.kidozenApplication = new KZApplication (Marketplace, Application, Key);
 		}
 
-		#if __IOS__
 		public void Login(KZApplication.OnEventHandler onAuthFinish) {
+			#if __ANDROID__
+			this.kidozenApplication.Authenticate (App.AndroidContext, onAuthFinish);
+			#else
 			this.kidozenApplication.Authenticate (onAuthFinish);
+			#endif
 			database = kidozenApplication.Storage["todo"];
 		}
-		#else
-		public void Login(KZApplication.OnEventHandler onAuthFinish) {
-			this.kidozenApplication.Authenticate (null,onAuthFinish);
-			database = kidozenApplication.Storage["todo"];
-		}
-		#endif
 
 		public IEnumerable<TodoItem> GetItems ()
 		{

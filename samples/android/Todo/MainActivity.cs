@@ -8,7 +8,7 @@ using Android.Widget;
 using Android.OS;
 
 using Xamarin.Forms.Platform.Android;
-
+using KidoZen.Client.Android;
 
 namespace Todo.Android
 {
@@ -18,10 +18,19 @@ namespace Todo.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
 			Xamarin.Forms.Forms.Init (this, bundle);
 
-			SetPage (App.GetMainPage ());
+			App.AndroidContext = this.ApplicationContext;
+			SetPage (App.GetLoginPage (onKidoZenPassiveAuthenticationFinish));
+		}
+
+		internal void onKidoZenPassiveAuthenticationFinish(Object sender, EventArgs e ) {
+			var isAuthenticated =(e as AuthenticationResponseEventArgs).Success;
+			if(isAuthenticated) {
+				Application.SynchronizationContext.Post(_=>
+					SetPage (App.GetMainPage ())
+					,null);
+			}
 		}
 	}
 }
