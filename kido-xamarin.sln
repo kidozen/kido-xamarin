@@ -307,6 +307,9 @@ Global
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
 		$1.ResourceNamePolicy = FileFormatDefault
+		$0.StandardHeader = $2
+		$2.Text = 
+		$2.IncludeInNewFiles = True
 		version = 1.2.0
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
