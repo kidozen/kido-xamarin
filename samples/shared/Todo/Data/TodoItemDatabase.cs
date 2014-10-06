@@ -50,7 +50,7 @@ namespace Todo
 		public void DeleteItem(string id)
 		{
 			lock (locker) {
-				database.Delete(id).RunSynchronously();
+				var deleted = database.Delete (id).Result;
 			}
 		}
 
