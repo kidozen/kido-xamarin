@@ -5,22 +5,26 @@ The KidoZen SDK for Xamarin provides libraries and code samples for
 developers to build connected applications using KidoZen. This guide walks
 through the steps for setting up the SDK and running the tests.
 
+For more information [check this link](http://docs.kidozen.com/?p=3091)
+
 ##    Get Set Up
-##
+
 To get Your Credentials Register in [kidozen.com](http://kidozen.com).
 
 ##    Get the Xamarin SDK
-##
+
 Minimum requirements for using the KidoZen SDK for Xamarin are:
 
 - Xamarin Studio 5.4
 - Android SDK Version 17 or above 
 
 ##    Whats new?
-##    Passive authentication support.
+Passive authentication support.
+For more information [check this link](http://docs.kidozen.com/?p=3087)
+      
 
 ##    About the Unit Tests
-##
+
 The Unit Tests projects require your Marketplace's URL, Application's
 name, User, Password, etc directly into the code. This approach will get you
 running quickly, but we do not recommend it in a production application: a
