@@ -28,9 +28,6 @@ namespace KidoZen
 #else
 				var req= new HttpWebRequest(request.Uri);
 #endif
-                ServicePointManager.ServerCertificateValidationCallback = (sender, cert, chain, ssl) => {
-                    return true;
-                };
 
                 req.Method = request.Method;
                 req.AddHeaders(request.Headers);
