@@ -196,7 +196,7 @@ namespace KidoZen
 					headers.Add("timeout",timeout.Value.TotalSeconds.ToString());
 
 				//**** Passive Auth HotFix ****
-				if (app.PassiveAuthenticationInformation!=null) {
+				if (app!= null && app.PassiveAuthenticationInformation!=null) {
 					headers["Authorization"] = "WRAP access_token=\"" + app.PassiveAuthenticationInformation["access_token"] + "\"";
 				}
 				else {
